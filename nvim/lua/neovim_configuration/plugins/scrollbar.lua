@@ -1,0 +1,2 @@
+-- Can't get scroll to follow theme colors my way. Leaving it for now
+-- require "scrollbar".setup()
