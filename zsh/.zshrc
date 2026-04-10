@@ -1,21 +1,21 @@
-
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE=$XDG_CONFIG_HOME/zsh/.zsh_history
-# History won't save duplicates.
+## History won't save duplicates.
 setopt HIST_IGNORE_ALL_DUPS
-
-# History won't show duplicates on search.
+    #
+    ## History won't show duplicates on search.
 setopt HIST_FIND_NO_DUPS
-
+#
 setopt HIST_IGNORE_SPACE
-
+#
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
+#
 autoload -U compinit && compinit -d ~/.config/zsh/zcompdump
+#
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -26,20 +26,24 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list "" 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # match all case
 _comp_options+=(globdots) # complete hidden files
 bindkey '^[[Z' reverse-menu-complete
-
+#
 alias v="nvim";
-alias vs="sudoedit";
+alias vv="neovide";
+alias sv="sudoedit";
 alias hc="herbstclient";
-alias f="~/.config/lf/lfrun";
-alias lf="~/.config/lf/lfrun";
+#alias f="~/.config/lf/lfrun";
+#alias lf="~/.config/lf/lfrun";
+alias f="yazi"
 alias t="todo.sh -c";
-alias chmod_server="sudo chmod -R 777 /srv/http && sudo chown -R wwwrun:wwwrun /srv/http && sudo chmod 755 /srv/http/phpmyadmin/config.inc.php";
+alias chmod_server="sudo chmod -R 777 /srv/http && sudo chown -R http:http /srv/http";
 alias gp="git push";
 alias gP="git pull";
 alias gc="git commit";
 alias ga="git add";
 alias ls="exa --git --icons"
-alias weather="curl -s \"wttr.in/$(echo "$(curl -s https://ipinfo.io/)" | jq -r '.city' | sed 's/ /+/g')\"";
+alias large_files="du -a ~/ | sort -n -r | head -n 100"
 
-PROMPT=' %F{blue}%~%f  '
-
+# MESSING UP STARTUP TIME
+#alias weather="curl -s \"wttr.in/$(echo "$(curl -s https://ipinfo.io/)" | jq -r '.city' | sed 's/ /+/g')\"";
+#
+PROMPT=' %F{yellow}%~%f  '
